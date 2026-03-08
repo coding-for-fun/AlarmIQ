@@ -1,0 +1,81 @@
+{
+  "expo": {
+    "name": "AlarmIQ",
+    "slug": "AlarmIQ",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "alarmiq",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "plugins": [
+        [
+          "expo-camera",
+          {
+            "cameraPermission": "Allow this app to access your camera to scan text."
+          }
+        ]
+      ]
+    },
+    "android": {
+      "permissions": [
+        "CAMERA",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.mazybari.alarmiq"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermission": "Allow AlarmScan to access your camera to scan alarm codes.",
+          "enableFrameProcessors": true
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow AlarmScan to access your camera to scan alarm codes."
+        }
+      ],
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0b2f7a5f-e1bd-460f-b878-f970eafd0cac"
+      }
+    }
+  }
+}
