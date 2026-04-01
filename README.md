@@ -1,102 +1,75 @@
-# \# Welcome to your Expo app 👋
+# AlarmIQ
 
-# 
+A React Native mobile app that lets technicians scan alarm panel displays with their phone camera and instantly look up fault code explanations and recommended actions.
 
-# This is an \[Expo](https://expo.dev) project created with \[`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## What it does
 
-# 
+**Scanner** — Point your camera at an alarm panel showing fault codes, tap Scan, and AlarmIQ uses OCR to read the codes and display a description plus action steps. If multiple codes are detected, you can pick the one you want.
 
-# \## Get started
+**Code Browser** — A searchable list of every alarm code in the database. Tap any entry to expand it and see the recommended action.
 
-# 
+## Supported alarm code categories
 
-# 1\. Install dependencies
+| Category | Examples |
+|---|---|
+Add ur codes
 
-# 
+## Tech stack
 
-# &nbsp;  ```bash
+- [Expo] (SDK 54) with Expo Router
+- React Native 0.81
+- `expo-camera` + `expo-text-recognition` for OCR scanning
+- `react-native-vision-camera` for advanced camera support
+- TypeScript
 
-# &nbsp;  npm install
+## Getting started
 
-# &nbsp;  ```
+### Prerequisites
 
-# 
+- Node.js 18+
+- Android device/emulator or iOS device/simulator
 
-# 2\. Start the app
+### Install
 
-# 
+```bash
+npm install
+```
 
-# &nbsp;  ```bash
+### Run
 
-# &nbsp;  npx expo start
+```bash
+# Start Expo dev server
+npm start
 
-# &nbsp;  ```
+# Android
+npm run android
 
-# 
+# iOS
+npm run ios
+```
 
-# In the output, you'll find options to open the app in a
+## Adding alarm codes
 
-# 
+All codes live in [data/alarm-codes.ts](data/alarm-codes.ts). Add an entry to the `ALARM_CODES` array:
 
-# \- \[development build](https://docs.expo.dev/develop/development-builds/introduction/)
+```ts
+{
+  code: 'FA06',
+  description: 'Fire Alarm - Car Park (Zone 6)',
+  category: 'Fire',
+  action: 'Evacuate building. Check car park level.'
+}
+```
 
-# \- \[Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+The scanner automatically picks up new codes — no other changes needed. Matching is case- and space-insensitive, so `"FA 06"` will match `"FA06"`.
 
-# \- \[iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+## Project structure
 
-# \- \[Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-# 
-
-# You can start developing by editing the files inside the \*\*app\*\* directory. This project uses \[file-based routing](https://docs.expo.dev/router/introduction).
-
-# 
-
-# \## Get a fresh project
-
-# 
-
-# When you're ready, run:
-
-# 
-
-# ```bash
-
-# npm run reset-project
-
-# ```
-
-# 
-
-# This command will move the starter code to the \*\*app-example\*\* directory and create a blank \*\*app\*\* directory where you can start developing.
-
-# 
-
-# \## Learn more
-
-# 
-
-# To learn more about developing your project with Expo, look at the following resources:
-
-# 
-
-# \- \[Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our \[guides](https://docs.expo.dev/guides).
-
-# \- \[Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-# 
-
-# \## Join the community
-
-# 
-
-# Join our community of developers creating universal apps.
-
-# 
-
-# \- \[Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-
-# \- \[Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
-
-
+```
+app/
+  (tabs)/
+    index.tsx       # Camera scanner screen
+    explore.tsx     # Alarm code browser
+data/
+  alarm-codes.ts    # Code database + search/match utilities
+```
